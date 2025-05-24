@@ -23,10 +23,10 @@
       <h4>Clients List</h4>
         <table class="w3-table w3-bordered w3-border w3-small">
         <tr>
-          <th>nombre</th>
-          <th>direccion</th>
-          <th>telefono</th>
-          <th>estado</th>
+          <th>Nombre</th>
+          <th>Direccion</th>
+          <th>Telefono</th>
+          <th>Estado</th>
           <!-- <th>edad</th> -->
         </tr>
         <tr
@@ -35,11 +35,9 @@
         (click)="setActiveClient(client, i)" >
           <td> {{ client.nombre }}</td>
           <td> {{ client.direccion }}</td>
-          <!-- <td> {{ client.identificacion }}</td> -->
           <td> {{ client.telefono }}</td>
           <td> {{ client.estado }}</td>
-          <!-- <td> {{ client.email }}</td> -->
-          <!-- <td> {{ client.persona.edad }}</td> -->
+
         </tr>
         </table>
       <!-- <button class="m-3 btn btn-sm btn-danger" (click)="removeAllClients()">
@@ -48,7 +46,7 @@
     </div>
     <div class="col-md-6">
       <div *ngIf="currentClient">
-        <h4>Client selected</h4>
+        <h4>Client Selected</h4>
         <div>
           <label><strong>Nombre:</strong></label> {{ currentClient.nombre }}
         </div>
