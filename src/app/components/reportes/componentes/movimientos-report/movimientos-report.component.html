@@ -21,3 +21,27 @@
         </div>
       </div>
     </div>
+    <div class="col-md-12 mt-3">
+    <h4>Resultados de Movimientos</h4>
+    <table class="table table-bordered" *ngIf="movimientos && movimientos.length > 0">
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Tipo</th>
+          <th>Valor</th>
+          <th>Saldo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let mov of movimientos">
+          <td>{{ mov.fecha }}</td>
+          <td>{{ mov.tipo }}</td>
+          <td>{{ mov.valor }}</td>
+          <td>{{ mov.saldo }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div *ngIf="movimientos && movimientos.length === 0">
+      <p>No se encontraron movimientos para el número de cuenta ingresado.</p>
+    </div>
+  </div>
