@@ -1,47 +1,66 @@
 <div class="w3-container">
-    <h1>{{title}}</h1>
-  </div>
-  {{issuer}}
-  <div class="list row">
-      <div class="col-md-8">
-        <div class="input-group mb-3">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Buscar por Numero Cuenta"
-            [(ngModel)]="numeroCuenta"/>
-          <div class="input-group-append">
-            <button
-              class="btn btn-outline-secondary"
-              type="button"
-              (click)="buscarPorNumeroCuenta()">
-              Buscar
-            </button>
-          </div>
-        </div>
+  <h1>{{ title }}</h1>
+</div>
+{{ issuer }}
+<div class="list row">
+  <div class="col-md-8">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Buscar por Numero Cuenta"
+        [(ngModel)]="numeroCuenta"
+      />
+      <input
+        type="date"
+        class="form-control ml-2"
+        placeholder="Fecha inicio"
+        [(ngModel)]="fechaInicio"
+      />
+      <input
+        type="date"
+        class="form-control ml-2"
+        placeholder="Fecha fin"
+        [(ngModel)]="fechaFin"
+      />
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="buscarPorNumeroCuenta()"
+        >
+          Buscar
+        </button>
       </div>
     </div>
-    <div class="col-md-12 mt-3">
-    <h4>Resultados de Movimientos</h4>
-    <table class="table table-bordered" *ngIf="movimientos && movimientos.length > 0">
-      <thead>
-        <tr>
-          <th>Fecha</th>
-          <th>Tipo</th>
-          <th>Valor</th>
-          <th>Saldo</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let mov of movimientos">
-          <td>{{ mov.fecha }}</td>
-          <td>{{ mov.tipo }}</td>
-          <td>{{ mov.valor }}</td>
-          <td>{{ mov.saldo }}</td>
-        </tr>
-      </tbody>
-    </table>
-    <div *ngIf="movimientos && movimientos.length === 0">
-      <p>No se encontraron movimientos para el número de cuenta ingresado.</p>
-    </div>
   </div>
+</div>
+<div class="col-md-12 mt-3">
+  <h4>Resultados de Movimientos</h4>
+  <table
+    class="table table-bordered"
+    *ngIf="movimientos && movimientos.length > 0"
+  >
+    <thead>
+      <tr>
+        <th>Fecha</th>
+        <th>Tipo</th>
+        <th>Valor</th>
+        <th>Saldo</th>
+        <th>Descripción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let mov of movimientos">
+        <td>{{ mov.fecha }}</td>
+        <td>{{ mov.tipo }}</td>
+        <td>{{ mov.valor }}</td>
+        <td>{{ mov.saldo }}</td>
+        <td>{{ mov.descripcion }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="movimientos && movimientos.length === 0">
+    <p>No se encontraron movimientos para el número de cuenta ingresado.</p>
+  </div>
+</div>
