@@ -1,0 +1,48 @@
+<div style=" margin: auto;">
+    <div *ngIf="currentMovimiento" class="edit-form">
+      <h4>Movimiento</h4>
+      <form [formGroup]="form" (submit)="updateMovimiento()" class="form">
+        <div class="row">
+          <div class="col-sm-4">
+            <label>Fecha</label>
+            <input class="form-control"  formControlName="fecha" type="text">  
+          </div>
+          <div class="col-sm-4">
+            <div class="form-group">
+                <label>Saldo</label>
+                <input class="form-control"  formControlName="saldo" type="text">  
+            </div>
+          </div>
+        </div>
+  
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="form-group">
+                <label>Tipo Movimiento</label>
+                <select formControlName="tipo" class="custom-select mr-sm-2" id="inlineFormCustomSelect2">
+                  <option value="DEPOSITO">DEPOSITO</option>
+                  <option value="RETIRO">RETIRO</option>
+                </select>
+
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="form-group">
+                <label>valor</label>
+                <input class="form-control"  formControlName="valor" type="text">
+            </div>
+          </div>
+        </div>
+        <button class="badge badge-danger mr-2" (click)="deleteMovimiento()">
+          Eliminar
+        </button>
+        <button  [disabled]="form.invalid" type="submit" (click)="updateMovimiento()" class="btn btn-success">Enviar</button>
+        <p>{{ message }}</p>
+      </form>
+      <div *ngIf="!currentMovimiento">
+        <br />
+        <p>Cannot access this Movimiento...</p>
+      </div>
+    </div>
+  </div>
+  

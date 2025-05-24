@@ -1,0 +1,78 @@
+<div class="w3-container">
+    <h1>{{title}}</h1>
+  </div>
+  {{issuer}}
+  <div class="list row">
+      <div class="col-md-8">
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Buscar por Numero Cuenta"
+            [(ngModel)]="numeroCuenta"/>
+          <div class="input-group-append">
+            <button
+              class="btn btn-outline-secondary"
+              type="button"
+              (click)="buscarPorNumeroCuenta()">
+              Buscar
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="col-md-8">
+       <app-cuentas-list [showTitle]="false" [showEditButton]="false" (selectCuentaEvent)="setActiveCuenta($event)" ></app-cuentas-list> 
+      </div> -->
+      <div class="col-md-6">
+        <h4>Lista de Movimientos</h4>
+          <table class="w3-table w3-bordered w3-border w3-small">
+          <tr>
+            <th>TIPO</th>
+            <th>SALDO</th>
+            <th>VALOR</th>
+            <th>FECHA</th>
+            <th>DESCRIPCION</th>
+          </tr>
+          <tr 
+          *ngFor="let movimiento of movimientos; let i = index" 
+          [class.active]="i == currentIndex"
+          (click)="setActiveMovimiento(movimiento, i)" >
+            <td> {{ movimiento.tipo }}</td>
+            <td> {{ movimiento.saldo }}</td>
+            <td> {{ movimiento.valor }}</td>
+            <td> {{ movimiento.fecha }}</td>
+            <td> {{ movimiento.descripcion }}</td>
+          </tr>
+          </table>
+      <!-- <button class="m-3 btn btn-sm btn-warning" (click)="removeAllClients()">
+        Remove All
+      </button> -->
+      </div>
+      <div class="col-md-6">
+        <div *ngIf="currentMovimiento">
+          <h4>Movimiento seleccionado</h4>
+          <div>
+            <label><strong>Numero:</strong></label> {{ currentMovimiento.numeroCuenta }}
+          </div>
+          <div>
+            <label><strong>Valor:</strong></label>
+            {{ currentMovimiento.valor }}
+          </div>
+          <div>
+            <label><strong>Fecha:</strong></label>
+            {{ currentMovimiento.fecha }}
+          </div>
+          <!-- <div>
+            <label><strong>Status:</strong></label>
+            {{ currentMovimiento.estado ? "Published" : "Pending" }}
+          </div> -->
+          <a   class="m-3 btn btn-sm btn-warning" routerLink="/movimiento/{{ currentMovimiento.movimientoId }}">
+            Edit
+          </a>
+        </div>
+        <div *ngIf="!currentMovimiento">
+          <br />
+          <p>Por favor clic en un movivmiento...</p>
+        </div>
+      </div>
+    </div>

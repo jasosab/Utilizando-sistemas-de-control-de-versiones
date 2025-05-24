@@ -1,0 +1,191 @@
+<div style=" margin: auto;">
+  <div *ngIf="currentClient" class="edit-form">
+    <h4>Client</h4>
+    <div>
+      <div class="row">
+        <div class="col-sm-4">
+
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input
+            type="text"
+            class="form-control"
+            id="nombre"
+            [(ngModel)]="currentClient.persona.nombre"
+            name="nombre"
+            />
+          </div>
+        </div>
+        <div class="col-sm-4">
+
+          <div class="form-group">
+            <label for="apellido">Apellido</label>
+            <input
+            type="text"
+            class="form-control"
+            id="apellido"
+            [(ngModel)]="currentClient.persona.apellido"
+            name="apellido"
+            />
+          </div>
+
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="identificacion">Identificacion</label>
+              <input
+              type="text"
+              class="form-control"
+              id="identificacion"
+              [(ngModel)]="currentClient.persona.identificacion"
+              name="identificacion"
+              />
+          </div>
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="genero">Genero</label>
+            <select [(ngModel)]="currentClient.persona.genero" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+              <option selected>Choose...</option>
+              <option value="MASCULINO">MASCULINO</option>
+              <option value="FEMENINO">FEMENINO</option>
+              <option value="OTRO">OTRO</option>
+            </select>
+
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="direccion">Direccion</label>
+              <input
+              type="text"
+              class="form-control"
+              id="direccion"
+              [(ngModel)]="currentClient.persona.direccion"
+              name="direccion"
+              />
+          </div>
+        </div>
+        <div class="col-sm-4">
+
+          <div class="form-group">
+            <label for="telefono">Telefono</label>
+            <input
+            type="number"
+            class="form-control"
+            id="telefono"
+            [(ngModel)]="currentClient.persona.telefono"
+            name="telefono"
+            />
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-sm-4">
+
+          <div class="form-group">
+            <label for="estado">Estado</label>
+            <button class="badge badge-primary mr-2" *ngIf="this.currentClient.estado=='ACTIVO'" (click)="updateEstado(false)">
+              Inactivo
+            </button>
+            <button *ngIf="(this.currentClient.estado=='INACTIVO')" class="badge badge-primary mr-2" (click)="updateEstado(true)">
+              Activo
+            </button>
+
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+            type="text"
+            class="form-control"
+            id="password"
+            [(ngModel)]="currentClient.password"
+            name="password"
+            />
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+            type="email"
+            class="form-control"
+            id="email"
+            [(ngModel)]="currentClient.persona.email"
+            name="email"
+            />
+          </div>
+        </div>
+      </div>
+      <button class="badge badge-danger mr-2" (click)="deleteClient()">
+        Delete
+      </button>
+      <button type="submit" (click)="updateClient()" class="btn btn-success">Submit</button>
+      <p>{{ message }}</p>
+    </div>
+    <div *ngIf="!currentClient">
+      <br />
+      <p>Cannot access this Client...</p>
+    </div>
+    <!-- <div *ngIf="submitted">
+      <h4>You submitted successfully!</h4>
+      <button class="btn btn-success" (click)="newClient()">Add</button>
+    </div> -->
+  </div>
+</div>
+
+
+<!-- <div style="width: 400px; margin: auto;"> -->
+    <!-- <div *ngIf="currentClient" class="edit-form">
+      <h4>Client</h4>
+      <form>
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nombre"
+            [(ngModel)]="currentClient.persona.nombre"
+            name="nombre"
+          />
+        </div>
+        <div class="form-group">
+          <label for="telefono">Telefono</label>
+          <input
+            type="text"
+            class="form-control"
+            id="telefono"
+            [(ngModel)]="currentClient.persona.telefono"
+            name="telefono"
+          />
+        </div> -->
+        <!-- <div class="form-group">
+          <label><strong>Status:</strong></label>
+          {{ currentClient.published ? "Published" : "Pending" }}
+        </div> -->
+      <!-- </form> -->
+      <!-- <button class="badge badge-danger mr-2" (click)="deleteClient()">
+        Delete
+      </button> -->
+      <!-- <button
+        type="submit"
+        class="badge badge-success"
+        (click)="updateClient()"
+      >
+        Update
+      </button> -->
+      <!-- <p>{{ message }}</p> -->
+    <!-- </div> -->
+    <!-- <div *ngIf="!currentClient">
+      <br />
+      <p>Cannot access this Client...</p>
+    </div> -->
+  <!-- </div> -->

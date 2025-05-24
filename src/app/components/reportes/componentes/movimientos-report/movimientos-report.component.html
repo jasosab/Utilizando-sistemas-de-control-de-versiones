@@ -1,0 +1,23 @@
+<div class="w3-container">
+    <h1>{{title}}</h1>
+  </div>
+  {{issuer}}
+  <div class="list row">
+      <div class="col-md-8">
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Buscar por Numero Cuenta"
+            [(ngModel)]="numeroCuenta"/>
+          <div class="input-group-append">
+            <button
+              class="btn btn-outline-secondary"
+              type="button"
+              (click)="buscarPorNumeroCuenta()">
+              Buscar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>

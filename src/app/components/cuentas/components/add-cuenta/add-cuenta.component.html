@@ -1,0 +1,54 @@
+
+<div style=" margin: auto;">
+
+  <div *ngIf="!submitted">
+  <h1>{{title}}</h1>
+    <p>{{subTitle}}</p>
+    <div class="submit-form">
+      <form [formGroup]="form" (submit)="saveCuenta()" class="form">
+        <div class="form-group">
+          <label>Buscar y seleccionar un cliente</label>
+          <input class="form-control"  type="hidden" formControlName="clienteId">
+          <app-clients-list [showTitle]="false" [showEditButton]="false" (selectClientEvent)="setActiveClient($event)" ></app-clients-list>
+        </div>
+      
+        <div class="form-group">
+          <label>Estado</label>
+          <!-- <input class="form-control"  formControlName="estado" type="text"> -->
+
+          <select formControlName="estado" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+            <!-- <option selected>Choose...</option> -->
+            <option value="ACTIVO">ACTIVO</option>
+            <option value="INACTIVO">INACTIVO</option>
+          </select>
+
+        </div>
+        <div class="form-group">
+          <label>Saldo Inicial</label>
+          <input class="form-control"  formControlName="saldoInicial" type="text">
+        </div>
+        <div class="form-group">
+          <label>Tipo Cuenta</label>
+          <!-- <input class="form-control"  formControlName="tipoCuenta" type="text"> -->
+          <select formControlName="tipoCuenta" class="custom-select mr-sm-2" id="inlineFormCustomSelect2">
+            <!-- <option selected>Choose...</option> -->
+            <option value="AHORROS">AHORROS</option>
+            <option value="CORRIENTE">CORRIENTE</option>
+          </select>
+        </div>
+        <div >
+          <label>Numero Cuenta</label>
+          <input class="form-control"  formControlName="numeroCuenta" type="text">
+        </div>
+        <div class="form-group">
+          <br>
+          <button [disabled]="form.invalid" class="btn btn-success">Enviar</button>
+        </div>
+      </form>
+      </div>
+    </div>
+    <div *ngIf="submitted">
+      <h4>You submitted successfully!</h4>
+      <button class="btn btn-success" (click)="newCuenta()">Add</button>
+    </div>
+  </div>

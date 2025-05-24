@@ -1,0 +1,57 @@
+<div style=" margin: auto;">
+    <div *ngIf="currentCuenta" class="edit-form">
+      <h4>Cuenta</h4>
+      <form [formGroup]="form" (submit)="updateCuenta()" class="form">
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="form-group">
+            <label>Cliente</label>
+            <input class="form-control"  formControlName="cliente" >
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <label>Estado</label>
+            <select formControlName="estado" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+              <option value="ACTIVO">ACTIVO</option>
+              <option value="INACTIVO">INACTIVO</option>
+            </select>
+          </div>
+          <div class="col-sm-4">
+            <div class="form-group">
+                <label>Saldo Inicial</label>
+                <input class="form-control"  formControlName="saldoInicial" type="text">  
+            </div>
+          </div>
+        </div>
+  
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="form-group">
+                <label>Tipo Cuenta</label>
+                <select formControlName="tipoCuenta" class="custom-select mr-sm-2" id="inlineFormCustomSelect2">
+                  <option value="AHORROS">AHORROS</option>
+                  <option value="CORRIENTE">CORRIENTE</option>
+                </select>
+
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="form-group">
+                <label>Numero Cuenta</label>
+                <input class="form-control"  formControlName="numeroCuenta" type="text">
+            </div>
+          </div>
+        </div>
+        <button class="badge badge-danger mr-2" (click)="deleteCuenta()">
+          Eliminar
+        </button>
+        <button  [disabled]="form.invalid" type="submit" (click)="updateCuenta()" class="btn btn-success">Enviar</button>
+        <p>{{ message }}</p>
+      </form>
+      <div *ngIf="!currentCuenta">
+        <br />
+        <p>Cannot access this Cuenta...</p>
+      </div>
+    </div>
+  </div>
+  
